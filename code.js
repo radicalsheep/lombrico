@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "G",
+  testo: "a",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -42,19 +42,15 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const size = sin((frameCount + indice) * 6) * ((volume * unita) / 2) * unita;
+  let larghezza = map(sin(frameCount + indice), -1, 1, 50, 150);
+  //let larghezza = map(volume, 0, 1, 100, 400);
+  strokeWeight(3);
+  stroke(255, 0, 0);
+  fill(255, 153, 214);
+  circle(x, y, larghezza, 20);
 
-  if (indice % 2 == 0) {
-    fill("black");
-  } else {
-    fill("white");
-  }
-  noStroke();
-
-  push();
-  translate(x, y);
-  ellipse(0, 0, size);
-  pop();
+  fill(0);
+  circle(x, y, unita);
 }
 
 /**
@@ -70,6 +66,7 @@ export function caricamentoRisorse() {}
 export function impostazioni() {
   frameRate(30);
   angleMode(DEGREES);
+  rectMode(CENTER);
 }
 
 /**
@@ -77,10 +74,10 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background(200);
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
+  fill(200);
   disegnaTesto();
 }
 
