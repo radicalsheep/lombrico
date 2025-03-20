@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "a",
+  testo: "s p y p e",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -42,15 +42,45 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  let larghezza = map(sin(frameCount + indice), -1, 1, 50, 150);
-  //let larghezza = map(volume, 0, 1, 100, 400);
-  strokeWeight(3);
-  stroke(255, 0, 0);
-  fill(255, 153, 214);
-  circle(x, y, larghezza, 20);
+  //if (indice % 3 == 0) {
+  //fill(255, 153, 214);
+  //} else if (indice % 3 == 1) {
+  //fill(255, 0, 0);
+  //}
+
+  if (indice % 3 == 0) {
+    fill(255, 153, 214);
+  }
+
+  let larghezza = map(sin(frameCount * 2), -1, 1, 50, 150);
+  let parla = map(volume * 2, 0, 1, 10, 100);
+
+  //lombrico
+  push();
+  //strokeWeight(3.5);
+  //stroke(255, 0, 0);
+  //fill(255, 153, 214);
+  circle(x, y, larghezza);
+  pop();
+
+  //occhi
+
+  fill(255);
+  noStroke();
+  ellipse(x - 10, y - 5, 12, 20);
+
+  fill(255);
+  noStroke();
+  ellipse(x + 10, y - 5, 12, 20);
 
   fill(0);
-  circle(x, y, unita);
+  ellipse(x - 10, y - 5, 6, 20);
+
+  fill(0);
+  ellipse(x + 10, y - 5, 6, 20);
+
+  fill(0);
+  circle(x, y + 15, parla);
 }
 
 /**
