@@ -9,7 +9,7 @@ export const configurazione = {
   sensibilitàMicrofonoBase: 1,
   densitàPuntiBase: 1,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -42,45 +42,58 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
+  push();
+  translate(x, y);
+  rotate(frameCount * 10 + indice * 10);
+  translate(10, 0);
   //if (indice % 3 == 0) {
   //fill(255, 153, 214);
   //} else if (indice % 3 == 1) {
   //fill(255, 0, 0);
   //}
 
-  if (indice % 3 == 0) {
+  if (indice % 2 == 0) {
     fill(255, 153, 214);
+  } else if (indice % 2 == 1) {
+    fill(255, 0, 0);
   }
 
-  let larghezza = map(sin(frameCount * 2), -1, 1, 50, 150);
+  let larghezza = 50;
+  // let larghezza = map(sin(frameCount * 2), -1, 1, 20, 50);
   let parla = map(volume * 2, 0, 1, 10, 100);
 
   //lombrico
-  push();
+
   //strokeWeight(3.5);
   //stroke(255, 0, 0);
   //fill(255, 153, 214);
-  circle(x, y, larghezza);
-  pop();
+  stroke(0);
+  circle(0, 0, larghezza);
 
   //occhi
 
-  fill(255);
-  noStroke();
-  ellipse(x - 10, y - 5, 12, 20);
+  push();
 
   fill(255);
   noStroke();
-  ellipse(x + 10, y - 5, 12, 20);
+  ellipse(-10, -5, 12, 20);
+
+  fill(255);
+  noStroke();
+  ellipse(+10, -5, 12, 20);
 
   fill(0);
-  ellipse(x - 10, y - 5, 6, 20);
+  ellipse(-10, -5, 6, 20);
 
   fill(0);
-  ellipse(x + 10, y - 5, 6, 20);
+  ellipse(+10, -5, 6, 20);
 
   fill(0);
-  circle(x, y + 15, parla);
+  circle(0, +15, parla);
+
+  pop();
+
+  pop();
 }
 
 /**
