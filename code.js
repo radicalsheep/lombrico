@@ -1,8 +1,9 @@
 export const configurazione = {
-  testo: "s p y p e",
+  testo: "a",
 
   dimensione: 0.8,
   interlinea: 0.7,
+
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
@@ -44,8 +45,7 @@ export function disegnaPunto({
 }) {
   push();
   translate(x, y);
-  rotate(frameCount * 10 + indice * 10);
-  translate(10, 0);
+
   //if (indice % 3 == 0) {
   //fill(255, 153, 214);
   //} else if (indice % 3 == 1) {
@@ -58,8 +58,8 @@ export function disegnaPunto({
     fill(255, 0, 0);
   }
 
-  let larghezza = 50;
-  // let larghezza = map(sin(frameCount * 2), -1, 1, 20, 50);
+  // let larghezza = 50;
+  let larghezza = map(sin(frameCount * 2), -1, 1, 70, 150);
   let parla = map(volume * 2, 0, 1, 10, 100);
 
   //lombrico
